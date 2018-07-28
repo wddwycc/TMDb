@@ -30,13 +30,34 @@ extension TMDb {
         let name: String
     }
 
+    public struct Actor: Codable {
+        let id: Int
+        let cast_id: Int
+        let character: String
+        let credit_id: String
+        let gender: Int?
+        let name: String
+        let order: Int
+        let profile_path: String?
+    }
+
+    public struct Member: Codable {
+        let id: Int
+        let credit_id: String
+        let department: String
+        let gender: Int?
+        let job: String
+        let name: String
+        let profile_path: String?
+    }
+
     public struct MovieOutline: Codable {
+        let id: Int
         let poster_path: String?
         let adult: Bool
         let overview: String?
         let release_date: String
         let genre_ids: [Int]
-        let id: Int
         let original_title: String
         let original_language: String
         let title: String
@@ -48,13 +69,13 @@ extension TMDb {
     }
 
     public struct MovieDetail: Codable {
+        let id: Int
         let adult: Bool
         let backdrop_path: String?
         let belongs_to_collection: String?
         let budget: Int
         let genres: [Genre]
         let homepage: String?
-        let id: Int
         let imdb_id: String?
         let original_language: String
         let original_title: String
@@ -101,5 +122,11 @@ extension TMDb {
         let page: Int
         let total_pages: Int
         let total_results: Int
+    }
+
+    public struct MovieCreditsResp: Codable {
+        let id: Int
+        let cast: [Actor]
+        let crew: [Member]
     }
 }

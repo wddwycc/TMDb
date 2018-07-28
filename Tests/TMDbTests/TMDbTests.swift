@@ -12,6 +12,8 @@ final class TMDbTests: XCTestCase {
 
     func testMoviesAPI() throws {
         try reqMap(.movieDetail(id: 550), TMDb.MovieDetail.self)
+        try reqMap(.movieCredits(id: 550), TMDb.MovieCreditsResp.self)
+
         try reqMap(.movieLatest, TMDb.MovieDetail.self)
         try reqMap(.movieNowPlaying(page: nil, region: nil),
                    TMDb.PaginatedRespWithDates<TMDb.MovieOutline>.self)

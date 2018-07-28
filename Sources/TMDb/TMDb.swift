@@ -4,6 +4,16 @@ import Moya
 
 public enum TMDb {
     case movieDetail(id: Int)
+    case movieCredits(id: Int)
+//    case movieExternalIds(id: Int)
+//    case movieImages(id: Int)
+//    case movieKeywords(id: Int)
+//    case movieReleaseDates(id: Int)
+//    case movieVideos(id: Int)
+//    case movieRecommendations(id: Int)
+//    case movieSimilar(id: Int)
+//    case movieReviews(id: Int)
+
     case movieLatest
     case movieNowPlaying(page: Int?, region: String?)
     case moviePopular(page: Int?, region: String?)
@@ -18,8 +28,10 @@ extension TMDb: TargetType {
 
     public var path: String {
         switch self {
-        case .movieDetail(id: let id):
+        case .movieDetail(let id):
             return "/movie/\(id)"
+        case .movieCredits(let id):
+            return "/movie/\(id)/credits"
         case .movieLatest:
             return "/movie/latest"
         case .movieNowPlaying:
@@ -42,7 +54,7 @@ extension TMDb: TargetType {
 
     public var task: Task {
         switch self {
-        case .movieDetail, .movieLatest:
+        case .movieDetail, .movieLatest, .movieCredits:
             return .requestPlain
         case .movieNowPlaying(let page, let region),
              .moviePopular(let page, let region),
@@ -52,7 +64,7 @@ extension TMDb: TargetType {
                 parameters: [
                     "page": page ?? "",
                     "region": region ?? "",
-                    ],
+                ],
                 encoding: URLEncoding())
         default:
             return .requestPlain

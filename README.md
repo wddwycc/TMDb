@@ -2,9 +2,9 @@
 
 ## General
 
-A modern API Layer for TMDb in Swift.
+A modern TMDb API Wrapper with:
 
-- [x] Completely typed API layer
+- [x] Completely typed API layer with Codable models
 - [x] Based on Moya, support Rx.
 - [x] Well tested
 - [ ] Support Cocoapods and SPM
@@ -133,7 +133,7 @@ api.request(.movieLatest) { (resp) in
 - [ ] [Get Account States](https://developers.themoviedb.org/3/movies/sidebar-item-get-movie-account-states)
 - [ ] [Get Alternative Titles](https://developers.themoviedb.org/3/movies/sidebar-item-get-movie-alternative-titles)
 - [ ] [Get Changes](https://developers.themoviedb.org/3/movies/sidebar-item-get-movie-changes)
-- [ ] [Get Credits](https://developers.themoviedb.org/3/movies/sidebar-item-get-movie-credits)
+- [x] [Get Credits](https://developers.themoviedb.org/3/movies/sidebar-item-get-movie-credits)
 - [ ] [Get External IDs](https://developers.themoviedb.org/3/movies/sidebar-item-get-movie-external-ids)
 - [ ] [Get Images](https://developers.themoviedb.org/3/movies/sidebar-item-get-movie-images)
 - [ ] [Get Keywords](https://developers.themoviedb.org/3/movies/sidebar-item-get-movie-keywords)
