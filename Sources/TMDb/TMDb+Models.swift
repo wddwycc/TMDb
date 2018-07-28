@@ -105,6 +105,18 @@ extension TMDb {
         case canceled = "Canceled"
     }
 
+    public struct MovieImage: Codable {
+        let file_path: String
+
+        let width: Int
+        let height: Int
+        let aspect_ratio: Double
+
+        let iso_639_1: String?
+        let vote_average: Decimal
+        let vote_count: Int
+    }
+
     public struct PaginatedResp<T: Codable>: Codable {
         let results: [T]
         let page: Int
@@ -136,5 +148,11 @@ extension TMDb {
         let facebook_id: String?
         let instagram_id: String?
         let twitter_id: String?
+    }
+
+    public struct MovieImages: Codable {
+        let id: Int
+        let backdrops: [MovieImage]
+        let posters: [MovieImage]
     }
 }

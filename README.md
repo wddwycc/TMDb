@@ -135,7 +135,7 @@ api.request(.movieLatest) { (resp) in
 - [ ] [Get Changes](https://developers.themoviedb.org/3/movies/sidebar-item-get-movie-changes)
 - [x] [Get Credits](https://developers.themoviedb.org/3/movies/sidebar-item-get-movie-credits)
 - [x] [Get External IDs](https://developers.themoviedb.org/3/movies/sidebar-item-get-movie-external-ids)
-- [ ] [Get Images](https://developers.themoviedb.org/3/movies/sidebar-item-get-movie-images)
+- [x] [Get Images](https://developers.themoviedb.org/3/movies/sidebar-item-get-movie-images)
 - [ ] [Get Keywords](https://developers.themoviedb.org/3/movies/sidebar-item-get-movie-keywords)
 - [ ] [Get Release Dates](https://developers.themoviedb.org/3/movies/sidebar-item-get-movie-release-dates)
 - [ ] [Get Videos](https://developers.themoviedb.org/3/movies/sidebar-item-get-movie-videos)

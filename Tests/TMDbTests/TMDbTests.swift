@@ -10,10 +10,13 @@ final class TMDbTests: XCTestCase {
         TMDb.AuthPlugin(apiKey: ProcessInfo.processInfo.environment["API_KEY"]!)
     ])
 
+    let movieId = 550
+
     func testMoviesAPI() throws {
-        try reqMap(.movieDetail(id: 550), TMDb.MovieDetail.self)
-        try reqMap(.movieCredits(id: 550), TMDb.MovieCredits.self)
-        try reqMap(.movieExternalIds(id: 550), TMDb.MovieExternalIds.self)
+        try reqMap(.movieDetail(id: movieId), TMDb.MovieDetail.self)
+        try reqMap(.movieCredits(id: movieId), TMDb.MovieCredits.self)
+        try reqMap(.movieExternalIds(id: movieId), TMDb.MovieExternalIds.self)
+        try reqMap(.movieImages(id: movieId), TMDb.MovieImages.self)
 
         try reqMap(.movieLatest, TMDb.MovieDetail.self)
         try reqMap(.movieNowPlaying(page: nil, region: nil), TMDb.PaginatedRespWithDates<TMDb.MovieOutline>.self)
@@ -25,6 +28,9 @@ final class TMDbTests: XCTestCase {
     private func reqMap<T: Codable>(_ endPoint: TMDb, _ target: T.Type) throws {
         _ = try api.rx.request(endPoint)
             .map(T.self)
+            .do(onError: { (err) in
+                print(err)
+            })
             .toBlocking()
             .single()
     }
