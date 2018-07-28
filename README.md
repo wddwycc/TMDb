@@ -1,9 +1,13 @@
 # TMDb
 
-## Features
+## General
 
-- [ ] Cocoapods support
+A modern API Layer for TMDb in Swift.
+
+- [x] Completely typed API layer
+- [x] Based on Moya, support Rx.
 - [x] Well tested
+- [ ] Support Cocoapods and SPM
 
 ## Manual
 
@@ -14,6 +18,15 @@ import TMDb
 let api = MoyaProvider<TMDb>(plugins: [
     TMDb.AuthPlugin(apiKey: apiKey)
 ])
+
+// Use Rx
+api.rx.request(.movie(.latest))
+    .map(MovieDetail.self)
+    .subscribe()
+
+// Without Rx
+api.request(.movie(.latest)) { (resp) in
+}
 
 ```
 
