@@ -21,7 +21,7 @@ let api = MoyaProvider<TMDb>(plugins: [
 
 // Use Rx
 api.rx.request(.movieLatest)
-    .map(MovieDetail.self)
+    .map(TMDb.MovieDetail.self)
     .subscribe()
 
 // Without Rx
