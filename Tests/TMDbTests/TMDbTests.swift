@@ -11,15 +11,15 @@ final class TMDbTests: XCTestCase {
     ])
 
     func testMoviesAPI() throws {
-        try reqMap(.movie(.detail(id: 550)), TMDb.MovieDetail.self)
-        try reqMap(.movie(.latest), TMDb.MovieDetail.self)
-        try reqMap(.movie(.nowPlaying(page: nil, region: nil)),
+        try reqMap(.movieDetail(id: 550), TMDb.MovieDetail.self)
+        try reqMap(.movieLatest, TMDb.MovieDetail.self)
+        try reqMap(.movieNowPlaying(page: nil, region: nil),
                    TMDb.PaginatedRespWithDates<TMDb.MovieOutline>.self)
-        try reqMap(.movie(.popular(page: nil, region: nil)),
+        try reqMap(.moviePopular(page: nil, region: nil),
                    TMDb.PaginatedResp<TMDb.MovieOutline>.self)
-        try reqMap(.movie(.topRated(page: nil, region: nil)),
+        try reqMap(.movieTopRated(page: nil, region: nil),
                    TMDb.PaginatedResp<TMDb.MovieOutline>.self)
-        try reqMap(.movie(.upcoming(page: nil, region: nil)),
+        try reqMap(.movieUpcoming(page: nil, region: nil),
                    TMDb.PaginatedRespWithDates<TMDb.MovieOutline>.self)
     }
 

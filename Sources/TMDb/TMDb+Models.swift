@@ -1,5 +1,5 @@
 //
-//  Models.swift
+//  TMDb+Models.swift
 //  TMDb
 //
 //  Created by duan on 2018/7/23.

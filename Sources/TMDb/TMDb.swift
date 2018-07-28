@@ -3,15 +3,12 @@ import Moya
 
 
 public enum TMDb {
-    public enum MovieAPI {
-        case detail(id: Int)
-        case latest
-        case nowPlaying(page: Int?, region: String?)
-        case popular(page: Int?, region: String?)
-        case topRated(page: Int?, region: String?)
-        case upcoming(page: Int?, region: String?)
-    }
-    case movie(MovieAPI)
+    case movieDetail(id: Int)
+    case movieLatest
+    case movieNowPlaying(page: Int?, region: String?)
+    case moviePopular(page: Int?, region: String?)
+    case movieTopRated(page: Int?, region: String?)
+    case movieUpcoming(page: Int?, region: String?)
 }
 
 extension TMDb: TargetType {
@@ -21,50 +18,44 @@ extension TMDb: TargetType {
 
     public var path: String {
         switch self {
-        case .movie(let type):
-            switch type {
-            case .detail(id: let id):
-                return "/movie/\(id)"
-            case .latest:
-                return "/movie/latest"
-            case .nowPlaying:
-                return "/movie/now_playing"
-            case .popular:
-                return "/movie/popular"
-            case .topRated:
-                return "/movie/top_rated"
-            case .upcoming:
-                return "/movie/upcoming"
-            }
+        case .movieDetail(id: let id):
+            return "/movie/\(id)"
+        case .movieLatest:
+            return "/movie/latest"
+        case .movieNowPlaying:
+            return "/movie/now_playing"
+        case .moviePopular:
+            return "/movie/popular"
+        case .movieTopRated:
+            return "/movie/top_rated"
+        case .movieUpcoming:
+            return "/movie/upcoming"
         }
     }
 
     public var method: Moya.Method {
         switch self {
-        case .movie(let type):
+        default:
             return .get
         }
     }
 
     public var task: Task {
         switch self {
-        case .movie(let type):
-            switch type {
-            case .detail, .latest:
-                return .requestPlain
-            case .nowPlaying(let page, let region),
-                 .popular(let page, let region),
-                 .topRated(let page, let region),
-                 .upcoming(let page, let region):
-                return .requestParameters(
-                    parameters: [
-                        "page": page ?? "",
-                        "region": region ?? "",
+        case .movieDetail, .movieLatest:
+            return .requestPlain
+        case .movieNowPlaying(let page, let region),
+             .moviePopular(let page, let region),
+             .movieTopRated(let page, let region),
+             .movieUpcoming(let page, let region):
+            return .requestParameters(
+                parameters: [
+                    "page": page ?? "",
+                    "region": region ?? "",
                     ],
-                    encoding: URLEncoding())
-            default:
-                return .requestPlain
-            }
+                encoding: URLEncoding())
+        default:
+            return .requestPlain
         }
     }
 
