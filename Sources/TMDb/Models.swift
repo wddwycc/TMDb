@@ -42,7 +42,7 @@ public struct Movie: Codable {
     let original_language: String
     let original_title: String
     let overview: String?
-    let popularity: Int
+    let popularity: Decimal
     let poster_path: String?
     let production_companies: [Company]
     let production_countries: [Country]
@@ -55,17 +55,17 @@ public struct Movie: Codable {
     let tagline: String?
     let title: String
     let video: Bool
-    let vote_average: Int
+    let vote_average: Decimal
     let vote_count: Int
 }
 
-extension Movie {
-    enum Status: String, Codable {
-        case rumored
-        case planned
-        case inProduction
-        case postProduction
-        case released
-        case canceled
+public extension Movie {
+    public enum Status: String, Codable {
+        case rumored = "Rumored"
+        case planned = "Planned"
+        case inProduction = "In Production"
+        case postProduction = "Post Production"
+        case released = "Released"
+        case canceled = "Canceled"
     }
 }

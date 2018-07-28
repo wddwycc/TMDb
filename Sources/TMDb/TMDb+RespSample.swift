@@ -12,41 +12,93 @@ import Foundation
 fileprivate let movieSample = """
 {
 "adult": false,
-"backdrop_path": null,
+"backdrop_path": "/fCayJrkfRaCRCTh8GqN30f8oyQF.jpg",
 "belongs_to_collection": null,
-"budget": 0,
+"budget": 63000000,
 "genres": [
 {
-"id": 99,
-"name": "Documentary"
+"id": 18,
+"name": "Drama"
 }
 ],
 "homepage": "",
-"id": 413323,
-"imdb_id": "tt5852644",
+"id": 550,
+"imdb_id": "tt0137523",
 "original_language": "en",
-"original_title": "Deadpool: From Comics to Screen... to Screen",
-"overview": "This documentary divided into five segments examines the source and its path to the movies, backstory, special effects story/character areas, cast and performances. It includes notes from Reynolds, Liefeld, Miller, Wernick, Reese, executive producers Aditya Sood and Stan Lee, co-creator/comics writer Fabian Nicieza, producer Simon Kinberg, comics writer Joe Kelly, specialty costume designer Russell Shinkle, makeup designer Bill Corso, production designer Sean Haworth, director of photography Ken Seng, executive producer/unit production manager John J. Kelly, previs supervisor Franck Balson, stunt coordinator Philip J. Silvera, visual effects supervisors Pauline Duvall and Jonathan Rothbart, visual effects producer Annemarie Griggs, 2nd unit director/stunt coordinator Robert Alonzo, special effects coordinator Alex Burdett, utility stunts Regis Harrington, composer Tom Holkenberg, and actors Morena Baccarin, TJ Miller, Brianna Hildebrand, Leslie Uggams, Ed Skrein, and Gina Carano.",
-"popularity": 0,
-"poster_path": "/chV0avy5ogIB2PMTInT4KpHDzwj.jpg",
-"production_companies": [],
-"production_countries": [],
-"release_date": "2016-05-10",
-"revenue": 0,
-"runtime": 80,
-"spoken_languages": [],
+"original_title": "Fight Club",
+"overview": "A ticking-time-bomb insomniac and a slippery soap salesman channel primal male aggression into a shocking new form of therapy. Their concept catches on, with underground fight clubs forming in every town, until an eccentric gets in the way and ignites an out-of-control spiral toward oblivion.",
+"popularity": 0.5,
+"poster_path": null,
+"production_companies": [
+{
+"id": 508,
+"logo_path": "/7PzJdsLGlR7oW4J0J5Xcd0pHGRg.png",
+"name": "Regency Enterprises",
+"origin_country": "US"
+},
+{
+"id": 711,
+"logo_path": null,
+"name": "Fox 2000 Pictures",
+"origin_country": ""
+},
+{
+"id": 20555,
+"logo_path": null,
+"name": "Taurus Film",
+"origin_country": ""
+},
+{
+"id": 54050,
+"logo_path": null,
+"name": "Linson Films",
+"origin_country": ""
+},
+{
+"id": 54051,
+"logo_path": null,
+"name": "Atman Entertainment",
+"origin_country": ""
+},
+{
+"id": 54052,
+"logo_path": null,
+"name": "Knickerbocker Films",
+"origin_country": ""
+},
+{
+"id": 25,
+"logo_path": "/qZCc1lty5FzX30aOCVRBLzaVmcp.png",
+"name": "20th Century Fox",
+"origin_country": "US"
+}
+],
+"production_countries": [
+{
+"iso_3166_1": "US",
+"name": "United States of America"
+}
+],
+"release_date": "1999-10-12",
+"revenue": 100853753,
+"runtime": 139,
+"spoken_languages": [
+{
+"iso_639_1": "en",
+"name": "English"
+}
+],
 "status": "Released",
-"tagline": "",
-"title": "Deadpool: From Comics to Screen... to Screen",
+"tagline": "How much can you know about yourself if you've never been in a fight?",
+"title": "Fight Club",
 "video": false,
-"vote_average": 0,
-"vote_count": 0
+"vote_average": 7.8,
+"vote_count": 3439
 }
 """
 
 
 extension TMDb {
-    /// Sample Response data from `https://developers.themoviedb.org/3/movies/get-now-playing`
     var respSample: String {
         switch self {
         case .latestMovie:

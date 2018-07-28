@@ -9,11 +9,11 @@ import Foundation
 import Moya
 
 
-extension TMDb {
-    struct AuthPlugin: PluginType {
+public extension TMDb {
+    public struct AuthPlugin: PluginType {
         let apiKey: String
 
-        func prepare(_ request: URLRequest, target: TargetType) -> URLRequest {
+        public func prepare(_ request: URLRequest, target: TargetType) -> URLRequest {
             var rv = request
             if let url = request.url, var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) {
                 let apiKeyQueryItem = URLQueryItem(name: "api_key", value: apiKey)
