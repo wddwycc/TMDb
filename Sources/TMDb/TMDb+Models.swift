@@ -51,6 +51,11 @@ extension TMDb {
         let profile_path: String?
     }
 
+    public struct Keyword: Codable {
+        let id: Int
+        let name: String
+    }
+
     public struct MovieOutline: Codable {
         let id: Int
         let poster_path: String?
@@ -154,5 +159,10 @@ extension TMDb {
         let id: Int
         let backdrops: [MovieImage]
         let posters: [MovieImage]
+    }
+
+    public struct MovieKeywords: Codable {
+        let id: Int
+        let keywords: [Keyword]
     }
 }

@@ -14,7 +14,7 @@ public enum TMDb {
     case movieCredits(id: Int)
     case movieExternalIds(id: Int)
     case movieImages(id: Int)
-//    case movieKeywords(id: Int)
+    case movieKeywords(id: Int)
 //    case movieReleaseDates(id: Int)
 //    case movieVideos(id: Int)
 //    case movieRecommendations(id: Int)
@@ -35,25 +35,17 @@ extension TMDb: TargetType {
 
     public var path: String {
         switch self {
-        case .movieDetail(let id):
-            return "/movie/\(id)"
-        case .movieCredits(let id):
-            return "/movie/\(id)/credits"
-        case .movieExternalIds(let id):
-            return "/movie/\(id)/external_ids"
-        case .movieImages(let id):
-            return "/movie/\(id)/images"
+        case .movieDetail(let id): return "/movie/\(id)"
+        case .movieCredits(let id): return "/movie/\(id)/credits"
+        case .movieExternalIds(let id): return "/movie/\(id)/external_ids"
+        case .movieImages(let id): return "/movie/\(id)/images"
+        case .movieKeywords(let id): return "/movie/\(id)/keywords"
 
-        case .movieLatest:
-            return "/movie/latest"
-        case .movieNowPlaying:
-            return "/movie/now_playing"
-        case .moviePopular:
-            return "/movie/popular"
-        case .movieTopRated:
-            return "/movie/top_rated"
-        case .movieUpcoming:
-            return "/movie/upcoming"
+        case .movieLatest: return "/movie/latest"
+        case .movieNowPlaying: return "/movie/now_playing"
+        case .moviePopular: return "/movie/popular"
+        case .movieTopRated: return "/movie/top_rated"
+        case .movieUpcoming: return "/movie/upcoming"
         }
     }
 
@@ -66,11 +58,6 @@ extension TMDb: TargetType {
 
     public var task: Task {
         switch self {
-        case .movieDetail,
-             .movieCredits,
-             .movieExternalIds,
-             .movieLatest:
-            return .requestPlain
         case .movieNowPlaying(let page, let region),
              .moviePopular(let page, let region),
              .movieTopRated(let page, let region),

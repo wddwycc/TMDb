@@ -17,6 +17,7 @@ final class TMDbTests: XCTestCase {
         try reqMap(.movieCredits(id: movieId), TMDb.MovieCredits.self)
         try reqMap(.movieExternalIds(id: movieId), TMDb.MovieExternalIds.self)
         try reqMap(.movieImages(id: movieId), TMDb.MovieImages.self)
+        try reqMap(.movieKeywords(id: movieId), TMDb.MovieKeywords.self)
 
         try reqMap(.movieLatest, TMDb.MovieDetail.self)
         try reqMap(.movieNowPlaying(page: nil, region: nil), TMDb.PaginatedRespWithDates<TMDb.MovieOutline>.self)
