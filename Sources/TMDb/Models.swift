@@ -30,7 +30,24 @@ public struct Country: Codable {
     let name: String
 }
 
-public struct Movie: Codable {
+public struct MovieOutline: Codable {
+    let poster_path: String?
+    let adult: Bool
+    let overview: String?
+    let release_date: String
+    let genre_ids: [Int]
+    let id: Int
+    let original_title: String
+    let original_language: String
+    let title: String
+    let backdrop_path: String?
+    let popularity: Decimal
+    let vote_count: Int
+    let video: Bool
+    let vote_average: Decimal
+}
+
+public struct MovieDetail: Codable {
     let adult: Bool
     let backdrop_path: String?
     let belongs_to_collection: String?
@@ -50,7 +67,7 @@ public struct Movie: Codable {
     let revenue: Int
     let runtime: Int?
     let spoken_languages: [Language]
-    let status: Status
+    let status: MovieStatus
     let tagline: String?
     let title: String
     let video: Bool
@@ -58,13 +75,30 @@ public struct Movie: Codable {
     let vote_count: Int
 }
 
-public extension Movie {
-    public enum Status: String, Codable {
-        case rumored = "Rumored"
-        case planned = "Planned"
-        case inProduction = "In Production"
-        case postProduction = "Post Production"
-        case released = "Released"
-        case canceled = "Canceled"
+public enum MovieStatus: String, Codable {
+    case rumored = "Rumored"
+    case planned = "Planned"
+    case inProduction = "In Production"
+    case postProduction = "Post Production"
+    case released = "Released"
+    case canceled = "Canceled"
+}
+
+public struct PaginatedResp<T: Codable>: Codable {
+    let results: T
+    let page: Int
+    let total_pages: Int
+    let total_results: Int
+}
+
+public struct PaginatedRespWithDates<T: Codable>: Codable {
+    public struct Dates: Codable {
+        let maximum: String
+        let minimum: String
     }
+    let results: T
+    let dates: Dates
+    let page: Int
+    let total_pages: Int
+    let total_results: Int
 }

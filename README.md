@@ -129,10 +129,10 @@ let api = MoyaProvider<TMDb>(plugins: [
 - [ ] [Rate Movie](https://developers.themoviedb.org/3/movies/sidebar-item-rate-movie)
 - [ ] [Delete Rating](https://developers.themoviedb.org/3/movies/sidebar-item-delete-movie-rating)
 - [x] [Get Latest](https://developers.themoviedb.org/3/movies/sidebar-item-get-latest-movie)
-- [ ] [Get Now Playing](https://developers.themoviedb.org/3/movies/sidebar-item-get-now-playing)
-- [ ] [Get Popular](https://developers.themoviedb.org/3/movies/sidebar-item-get-popular-movies)
-- [ ] [Get Top Rated](https://developers.themoviedb.org/3/movies/sidebar-item-get-top-rated-movies)
-- [ ] [Get Upcoming](https://developers.themoviedb.org/3/movies/sidebar-item-get-upcoming)
+- [x] [Get Now Playing](https://developers.themoviedb.org/3/movies/sidebar-item-get-now-playing)
+- [x] [Get Popular](https://developers.themoviedb.org/3/movies/sidebar-item-get-popular-movies)
+- [x] [Get Top Rated](https://developers.themoviedb.org/3/movies/sidebar-item-get-top-rated-movies)
+- [x] [Get Upcoming](https://developers.themoviedb.org/3/movies/sidebar-item-get-upcoming)
 
 ### NETWORKS
 

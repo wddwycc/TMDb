@@ -6,33 +6,27 @@ import RxBlocking
 @testable import TMDb
 
 final class TMDbTests: XCTestCase {
-    func testRespModels() throws {
-        let api = MoyaProvider<TMDb>(stubClosure: MoyaProvider.immediatelyStub)
-        try run(api)
+    let api = MoyaProvider<TMDb>(plugins: [
+        TMDb.AuthPlugin(apiKey: ProcessInfo.processInfo.environment["API_KEY"]!)
+    ])
+
+    func testMoviesAPI() throws {
+        try reqMap(.movie(.detail(id: 550)), MovieDetail.self)
+        try reqMap(.movie(.latest), MovieDetail.self)
+        try reqMap(.movie(.nowPlaying(page: nil, region: nil)), PaginatedRespWithDates<[MovieOutline]>.self)
+        try reqMap(.movie(.popular(page: nil, region: nil)), PaginatedResp<[MovieOutline]>.self)
+        try reqMap(.movie(.topRated(page: nil, region: nil)), PaginatedResp<[MovieOutline]>.self)
+        try reqMap(.movie(.upcoming(page: nil, region: nil)), PaginatedRespWithDates<[MovieOutline]>.self)
     }
 
-    func testRealworldAPI() throws {
-        let api = MoyaProvider<TMDb>(plugins: [
-            TMDb.AuthPlugin(apiKey: ProcessInfo.processInfo.environment["API_KEY"]!)
-        ])
-        try run(api)
-    }
-
-    private func run(_ api: MoyaProvider<TMDb>) throws {
-        _ = try api.rx.request(.movieLatest)
-            .map(Movie.self)
-            .toBlocking()
-            .single()
-        _ = try api.rx.request(.movieDetail(id: 550))
-            .map(Movie.self)
+    private func reqMap<T: Codable>(_ endPoint: TMDb, _ target: T.Type) throws {
+        _ = try api.rx.request(endPoint)
+            .map(T.self)
             .toBlocking()
             .single()
     }
-
 
     static var allTests = [
-        ("testRespModels", testRespModels),
-        ("testRealworldAPI", testRealworldAPI),
+        ("testAPI", testMoviesAPI),
     ]
-    
 }
