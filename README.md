@@ -1,18 +1,23 @@
 # TMDb
 
-## How
+## Features
 
-```
+- [ ] Cocoapods support
+- [x] Well tested
+
+## Manual
+
+```swift
 import Moya
 import TMDb
 
 let api = MoyaProvider<TMDb>(plugins: [
-	TMDb.AuthPlugin(apiKey: apiKey)
+    TMDb.AuthPlugin(apiKey: apiKey)
 ])
 
 ```
 
-## Todo
+## API TODO
 
 
 ### ACCOUNT
