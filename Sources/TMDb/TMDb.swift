@@ -3,7 +3,8 @@ import Moya
 
 
 public enum TMDb {
-    case latestMovie
+    case movieLatest
+    case movieDetail(id: Int)
 }
 
 extension TMDb: TargetType {
@@ -13,21 +14,23 @@ extension TMDb: TargetType {
 
     public var path: String {
         switch self {
-        case .latestMovie:
+        case .movieLatest:
             return "/movie/latest"
+        case .movieDetail(id: let id):
+            return "/movie/\(id)"
         }
     }
 
     public var method: Moya.Method {
         switch self {
-        case .latestMovie:
+        case .movieLatest, .movieDetail:
             return .get
         }
     }
 
     public var task: Task {
         switch self {
-        case .latestMovie:
+        case .movieLatest, .movieDetail:
             return .requestPlain
         }
     }

@@ -47,7 +47,6 @@ public struct Movie: Codable {
     let production_companies: [Company]
     let production_countries: [Country]
     let release_date: String
-    // Allowed Values: Rumored, Planned, In Production, Post Production, Released, Canceled
     let revenue: Int
     let runtime: Int?
     let spoken_languages: [Language]

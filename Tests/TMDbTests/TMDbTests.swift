@@ -19,17 +19,12 @@ final class TMDbTests: XCTestCase {
     }
 
     private func run(_ api: MoyaProvider<TMDb>) throws {
-        _ = try api.rx.request(.latestMovie)
-            .do(onSuccess: { (resp) in
-                let str = String.init(data: resp.data, encoding: .utf8)
-                print(str)
-            })
+        _ = try api.rx.request(.movieLatest)
             .map(Movie.self)
-            .do(onSuccess: { (objc) in
-                print(objc)
-            }, onError: { (err) in
-                print(err)
-            })
+            .toBlocking()
+            .single()
+        _ = try api.rx.request(.movieDetail(id: 550))
+            .map(Movie.self)
             .toBlocking()
             .single()
     }

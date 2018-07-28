@@ -101,7 +101,7 @@ fileprivate let movieSample = """
 extension TMDb {
     var respSample: String {
         switch self {
-        case .latestMovie:
+        case .movieLatest, .movieDetail:
             return movieSample
         }
     }
