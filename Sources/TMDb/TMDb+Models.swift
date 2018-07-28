@@ -124,9 +124,17 @@ extension TMDb {
         let total_results: Int
     }
 
-    public struct MovieCreditsResp: Codable {
+    public struct MovieCredits: Codable {
         let id: Int
         let cast: [Actor]
         let crew: [Member]
+    }
+
+    public struct MovieExternalIds: Codable {
+        let id: Int
+        let imdb_id: String?
+        let facebook_id: String?
+        let instagram_id: String?
+        let twitter_id: String?
     }
 }

@@ -12,17 +12,14 @@ final class TMDbTests: XCTestCase {
 
     func testMoviesAPI() throws {
         try reqMap(.movieDetail(id: 550), TMDb.MovieDetail.self)
-        try reqMap(.movieCredits(id: 550), TMDb.MovieCreditsResp.self)
+        try reqMap(.movieCredits(id: 550), TMDb.MovieCredits.self)
+        try reqMap(.movieExternalIds(id: 550), TMDb.MovieExternalIds.self)
 
         try reqMap(.movieLatest, TMDb.MovieDetail.self)
-        try reqMap(.movieNowPlaying(page: nil, region: nil),
-                   TMDb.PaginatedRespWithDates<TMDb.MovieOutline>.self)
-        try reqMap(.moviePopular(page: nil, region: nil),
-                   TMDb.PaginatedResp<TMDb.MovieOutline>.self)
-        try reqMap(.movieTopRated(page: nil, region: nil),
-                   TMDb.PaginatedResp<TMDb.MovieOutline>.self)
-        try reqMap(.movieUpcoming(page: nil, region: nil),
-                   TMDb.PaginatedRespWithDates<TMDb.MovieOutline>.self)
+        try reqMap(.movieNowPlaying(page: nil, region: nil), TMDb.PaginatedRespWithDates<TMDb.MovieOutline>.self)
+        try reqMap(.moviePopular(page: nil, region: nil), TMDb.PaginatedResp<TMDb.MovieOutline>.self)
+        try reqMap(.movieTopRated(page: nil, region: nil), TMDb.PaginatedResp<TMDb.MovieOutline>.self)
+        try reqMap(.movieUpcoming(page: nil, region: nil), TMDb.PaginatedRespWithDates<TMDb.MovieOutline>.self)
     }
 
     private func reqMap<T: Codable>(_ endPoint: TMDb, _ target: T.Type) throws {

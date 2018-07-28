@@ -1,3 +1,10 @@
+//
+//  TMDb.swift
+//  TMDb
+//
+//  Created by duan on 2018/7/23.
+//
+
 import Foundation
 import Moya
 
@@ -5,7 +12,7 @@ import Moya
 public enum TMDb {
     case movieDetail(id: Int)
     case movieCredits(id: Int)
-//    case movieExternalIds(id: Int)
+    case movieExternalIds(id: Int)
 //    case movieImages(id: Int)
 //    case movieKeywords(id: Int)
 //    case movieReleaseDates(id: Int)
@@ -32,6 +39,9 @@ extension TMDb: TargetType {
             return "/movie/\(id)"
         case .movieCredits(let id):
             return "/movie/\(id)/credits"
+        case .movieExternalIds(let id):
+            return "/movie/\(id)/external_ids"
+
         case .movieLatest:
             return "/movie/latest"
         case .movieNowPlaying:
@@ -54,7 +64,10 @@ extension TMDb: TargetType {
 
     public var task: Task {
         switch self {
-        case .movieDetail, .movieLatest, .movieCredits:
+        case .movieDetail,
+             .movieCredits,
+             .movieExternalIds,
+             .movieLatest:
             return .requestPlain
         case .movieNowPlaying(let page, let region),
              .moviePopular(let page, let region),
