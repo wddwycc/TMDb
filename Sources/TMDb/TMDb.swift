@@ -13,10 +13,11 @@ public enum TMDb {
     case movieDetail(id: Int)
     case movieCredits(id: Int)
     case movieExternalIds(id: Int)
-    case movieImages(id: Int)
+    // todo: include_image_language
+    case movieImages(id: Int, includeImageLanguages: [String]?)
     case movieKeywords(id: Int)
     case movieReleaseDates(id: Int)
-//    case movieVideos(id: Int)
+    case movieVideos(id: Int)
 //    case movieRecommendations(id: Int)
 //    case movieSimilar(id: Int)
 //    case movieReviews(id: Int)
@@ -41,6 +42,7 @@ extension TMDb: TargetType {
         case .movieImages(let id): return "/movie/\(id)/images"
         case .movieKeywords(let id): return "/movie/\(id)/keywords"
         case .movieReleaseDates(let id): return "/movie/\(id)/release_dates"
+        case .movieVideos(let id): return "/movie/\(id)/videos"
 
         case .movieLatest: return "/movie/latest"
         case .movieNowPlaying: return "/movie/now_playing"
@@ -59,6 +61,18 @@ extension TMDb: TargetType {
 
     public var task: Task {
         switch self {
+        case .movieImages(_, let languages):
+            let includeImageLanguages: String = {
+                if let languages = languages {
+                    return (languages + ["null"]).joined(separator: ",")
+                }
+                return ""
+            }()
+            return .requestParameters(
+                parameters: [
+                    "include_image_language": includeImageLanguages,
+                ],
+                encoding: URLEncoding())
         case .movieNowPlaying(let page, let region),
              .moviePopular(let page, let region),
              .movieTopRated(let page, let region),
