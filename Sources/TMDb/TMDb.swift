@@ -39,7 +39,7 @@ extension TMDb: TargetType {
         case .movieDetail(let id): return "/movie/\(id)"
         case .movieCredits(let id): return "/movie/\(id)/credits"
         case .movieExternalIds(let id): return "/movie/\(id)/external_ids"
-        case .movieImages(let id): return "/movie/\(id)/images"
+        case .movieImages(let id, _): return "/movie/\(id)/images"
         case .movieKeywords(let id): return "/movie/\(id)/keywords"
         case .movieReleaseDates(let id): return "/movie/\(id)/release_dates"
         case .movieVideos(let id): return "/movie/\(id)/videos"

@@ -30,7 +30,7 @@ api.request(.movieLatest) { (resp) in
 
 ```
 
-## API TODO
+## API
 
 
 ### ACCOUNT
@@ -138,7 +138,7 @@ api.request(.movieLatest) { (resp) in
 - [x] [Get Images](https://developers.themoviedb.org/3/movies/sidebar-item-get-movie-images)
 - [x] [Get Keywords](https://developers.themoviedb.org/3/movies/sidebar-item-get-movie-keywords)
 - [x] [Get Release Dates](https://developers.themoviedb.org/3/movies/sidebar-item-get-movie-release-dates)
-- [ ] [Get Videos](https://developers.themoviedb.org/3/movies/sidebar-item-get-movie-videos)
+- [x] [Get Videos](https://developers.themoviedb.org/3/movies/sidebar-item-get-movie-videos)
 - [ ] [Get Translations](https://developers.themoviedb.org/3/movies/sidebar-item-get-movie-translations)
 - [ ] [Get Recommendations](https://developers.themoviedb.org/3/movies/sidebar-item-get-movie-recommendations)
 - [ ] [Get Similar Movies](https://developers.themoviedb.org/3/movies/sidebar-item-get-similar-movies)

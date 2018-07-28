@@ -77,7 +77,7 @@ extension TMDb {
         let id: Int
         let adult: Bool
         let backdrop_path: String?
-        let belongs_to_collection: String?
+        let belongs_to_collection: MovieCollection?
         let budget: Int
         let genres: [Genre]
         let homepage: String?
@@ -99,6 +99,13 @@ extension TMDb {
         let video: Bool
         let vote_average: Decimal
         let vote_count: Int
+    }
+
+    public struct MovieCollection: Codable {
+        let id: Int
+        let name: String
+        let poster_path: String?
+        let backdrop_path: String?
     }
 
     public enum MovieStatus: String, Codable {
@@ -132,10 +139,29 @@ extension TMDb {
     }
 
     public struct MovieRelease: Codable {
+        let type: MovieReleaseType
+        let release_date: String
         let certification: String
         let iso_639_1: String
-        let release_date: String
-        let type: MovieReleaseType
         let note: String?
+    }
+
+    public struct MovieVideo: Codable {
+        let id: Int
+        let iso_639_1: String
+        let iso_3166_1: String
+        let key: String
+        let name: String
+        let site: String
+        /// 360, 480, 720, 1080
+        let size: Int
+        let type: MovieVideoType
+    }
+
+    public enum MovieVideoType: String, Codable {
+        case trailer = "Trailer"
+        case teaser = "Teaser"
+        case clip = "Clip"
+        case featurette = "Featurette"
     }
 }

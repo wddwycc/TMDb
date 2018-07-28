@@ -9,6 +9,11 @@ import Foundation
 
 
 extension TMDb {
+    public struct ListResp<T: Codable>: Codable {
+        let id: Int
+        let results: [T]
+    }
+
     public struct PaginatedResp<T: Codable>: Codable {
         let results: [T]
         let page: Int
@@ -54,11 +59,11 @@ extension TMDb {
     }
 
     public struct MovieReleaseDatesResp: Codable {
-        struct Results: Codable {
+        struct Result: Codable {
             let iso_3166_1: String
             let release_dates: [MovieRelease]
         }
         let id: Int
-        let results: [Results]
+        let results: [Result]
     }
 }
