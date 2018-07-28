@@ -19,10 +19,9 @@ final class TMDbTests: XCTestCase {
     }
 
     private func run(_ api: MoyaProvider<TMDb>) throws {
-        _ = try api.rx.request(.latestMovie)
+        _ = api.rx.request(.latestMovie)
             .map(Movie.self)
             .toBlocking()
-            .single()
     }
 
 

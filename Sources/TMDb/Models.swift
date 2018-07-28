@@ -18,6 +18,13 @@ public struct Language: Codable {
     let name: String
 }
 
+public struct Company: Codable {
+    let id: Int
+    let name: String
+    let logo_path: String?
+    let origin_country: String
+}
+
 public struct Country: Codable {
     let iso_3166_1: String
     let name: String
@@ -31,23 +38,34 @@ public struct Movie: Codable {
     let genres: [Genre]
     let homepage: String?
     let id: Int
-    let imdb_id: String
+    let imdb_id: String?
     let original_language: String
     let original_title: String
-    let overview: String
+    let overview: String?
     let popularity: Int
     let poster_path: String?
-    let production_companies: [String]
+    let production_companies: [Company]
     let production_countries: [Country]
     let release_date: String
+    // Allowed Values: Rumored, Planned, In Production, Post Production, Released, Canceled
     let revenue: Int
-    let runtime: Int
+    let runtime: Int?
     let spoken_languages: [Language]
-    let status: String
-    let tagline: String
+    let status: Status
+    let tagline: String?
     let title: String
     let video: Bool
     let vote_average: Int
     let vote_count: Int
 }
 
+extension Movie {
+    enum Status: String, Codable {
+        case rumored
+        case planned
+        case inProduction
+        case postProduction
+        case released
+        case canceled
+    }
+}

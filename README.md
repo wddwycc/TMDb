@@ -1,3 +1,12 @@
 # TMDb
 
-A description of this package.
+## How
+
+```
+import Moya
+
+let api = MoyaProvider<TMDb>(plugins: [
+	TMDb.AuthPlugin(apiKey: apiKey)
+])
+
+```
