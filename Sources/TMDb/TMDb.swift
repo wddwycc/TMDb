@@ -15,7 +15,7 @@ public enum TMDb {
     case movieExternalIds(id: Int)
     case movieImages(id: Int)
     case movieKeywords(id: Int)
-//    case movieReleaseDates(id: Int)
+    case movieReleaseDates(id: Int)
 //    case movieVideos(id: Int)
 //    case movieRecommendations(id: Int)
 //    case movieSimilar(id: Int)
@@ -40,6 +40,7 @@ extension TMDb: TargetType {
         case .movieExternalIds(let id): return "/movie/\(id)/external_ids"
         case .movieImages(let id): return "/movie/\(id)/images"
         case .movieKeywords(let id): return "/movie/\(id)/keywords"
+        case .movieReleaseDates(let id): return "/movie/\(id)/release_dates"
 
         case .movieLatest: return "/movie/latest"
         case .movieNowPlaying: return "/movie/now_playing"

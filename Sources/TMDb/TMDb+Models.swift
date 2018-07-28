@@ -122,47 +122,20 @@ extension TMDb {
         let vote_count: Int
     }
 
-    public struct PaginatedResp<T: Codable>: Codable {
-        let results: [T]
-        let page: Int
-        let total_pages: Int
-        let total_results: Int
+    public enum MovieReleaseType: Int, Codable {
+        case premiere = 1
+        case theatrical_limited
+        case theatrical
+        case digital
+        case physical
+        case tv
     }
 
-    public struct PaginatedRespWithDates<T: Codable>: Codable {
-        public struct Dates: Codable {
-            let maximum: String
-            let minimum: String
-        }
-        let results: [T]
-        let dates: Dates
-        let page: Int
-        let total_pages: Int
-        let total_results: Int
-    }
-
-    public struct MovieCredits: Codable {
-        let id: Int
-        let cast: [Actor]
-        let crew: [Member]
-    }
-
-    public struct MovieExternalIds: Codable {
-        let id: Int
-        let imdb_id: String?
-        let facebook_id: String?
-        let instagram_id: String?
-        let twitter_id: String?
-    }
-
-    public struct MovieImages: Codable {
-        let id: Int
-        let backdrops: [MovieImage]
-        let posters: [MovieImage]
-    }
-
-    public struct MovieKeywords: Codable {
-        let id: Int
-        let keywords: [Keyword]
+    public struct MovieRelease: Codable {
+        let certification: String
+        let iso_639_1: String
+        let release_date: String
+        let type: MovieReleaseType
+        let note: String?
     }
 }
