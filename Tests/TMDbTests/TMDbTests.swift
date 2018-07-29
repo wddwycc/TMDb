@@ -21,6 +21,8 @@ final class TMDbTests: XCTestCase {
         try reqMap(.movieKeywords(id: movieId), TMDb.MovieKeywordsResp.self)
         try reqMap(.movieReleaseDates(id: movieId), TMDb.MovieReleaseDatesResp.self)
         try reqMap(.movieVideos(id: movieId), TMDb.ListResp<TMDb.MovieVideo>.self)
+        try reqMap(.movieRecommendations(id: movieId, page: nil), TMDb.PaginatedResp<TMDb.MovieOutline>.self)
+        try reqMap(.movieSimilar(id: movieId, page: nil), TMDb.PaginatedResp<TMDb.MovieOutline>.self)
 
         try reqMap(.movieLatest, TMDb.MovieDetail.self)
         try reqMap(.movieNowPlaying(page: nil, region: nil), TMDb.PaginatedRespWithDates<TMDb.MovieOutline>.self)
