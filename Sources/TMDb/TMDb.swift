@@ -13,14 +13,13 @@ public enum TMDb {
     case movieDetail(id: Int)
     case movieCredits(id: Int)
     case movieExternalIds(id: Int)
-    // todo: include_image_language
     case movieImages(id: Int, includeImageLanguages: [String]?)
     case movieKeywords(id: Int)
     case movieReleaseDates(id: Int)
     case movieVideos(id: Int)
     case movieRecommendations(id: Int, page: Int?)
     case movieSimilar(id: Int, page: Int?)
-//    case movieReviews(id: Int)
+    case movieReviews(id: Int, page: Int?)
 
     case movieLatest
     case movieNowPlaying(page: Int?, region: String?)
@@ -45,6 +44,7 @@ extension TMDb: TargetType {
         case .movieVideos(let id): return "/movie/\(id)/videos"
         case .movieRecommendations(let id, _): return "/movie/\(id)/recommendations"
         case .movieSimilar(let id, _): return "/movie/\(id)/similar"
+        case .movieReviews(let id, _): return "/movie/\(id)/reviews"
 
         case .movieLatest: return "/movie/latest"
         case .movieNowPlaying: return "/movie/now_playing"

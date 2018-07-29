@@ -56,6 +56,13 @@ extension TMDb {
         let name: String
     }
 
+    public struct Review: Codable {
+        let id: String
+        let author: String
+        let content: String
+        let url: String
+    }
+
     public struct MovieOutline: Codable {
         let id: Int
         let poster_path: String?

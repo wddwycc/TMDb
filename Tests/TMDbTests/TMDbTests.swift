@@ -8,7 +8,7 @@ import RxBlocking
 final class TMDbTests: XCTestCase {
     let api = MoyaProvider<TMDb>(plugins: [
         TMDb.AuthPlugin(apiKey: ProcessInfo.processInfo.environment["API_KEY"]!),
-        // TMDb.LanguagePlugin(language: "en-US"),
+        TMDb.LanguagePlugin(language: "en-US"),
     ])
 
     let movieId = 550
@@ -23,6 +23,7 @@ final class TMDbTests: XCTestCase {
         try reqMap(.movieVideos(id: movieId), TMDb.ListResp<TMDb.MovieVideo>.self)
         try reqMap(.movieRecommendations(id: movieId, page: nil), TMDb.PaginatedResp<TMDb.MovieOutline>.self)
         try reqMap(.movieSimilar(id: movieId, page: nil), TMDb.PaginatedResp<TMDb.MovieOutline>.self)
+        try reqMap(.movieReviews(id: movieId, page: nil), TMDb.PaginatedResp<TMDb.Review>.self)
 
         try reqMap(.movieLatest, TMDb.MovieDetail.self)
         try reqMap(.movieNowPlaying(page: nil, region: nil), TMDb.PaginatedRespWithDates<TMDb.MovieOutline>.self)

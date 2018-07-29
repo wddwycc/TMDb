@@ -17,6 +17,7 @@ import TMDb
 
 let api = MoyaProvider<TMDb>(plugins: [
     TMDb.AuthPlugin(apiKey: apiKey)
+    TMDb.LanguagePlugin(language: "en-US")
 ])
 
 // Use Rx
@@ -142,7 +143,7 @@ api.request(.movieLatest) { (resp) in
 - [ ] [Get Translations](https://developers.themoviedb.org/3/movies/sidebar-item-get-movie-translations)
 - [x] [Get Recommendations](https://developers.themoviedb.org/3/movies/sidebar-item-get-movie-recommendations)
 - [x] [Get Similar Movies](https://developers.themoviedb.org/3/movies/sidebar-item-get-similar-movies)
-- [ ] [Get Reviews](https://developers.themoviedb.org/3/movies/sidebar-item-get-movie-reviews)
+- [x] [Get Reviews](https://developers.themoviedb.org/3/movies/sidebar-item-get-movie-reviews)
 - [ ] [Get Lists](https://developers.themoviedb.org/3/movies/sidebar-item-get-movie-lists)
 - [ ] [Rate Movie](https://developers.themoviedb.org/3/movies/sidebar-item-rate-movie)
 - [ ] [Delete Rating](https://developers.themoviedb.org/3/movies/sidebar-item-delete-movie-rating)
