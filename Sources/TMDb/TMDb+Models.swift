@@ -147,7 +147,7 @@ extension TMDb {
     }
 
     public struct MovieVideo: Codable {
-        let id: Int
+        let id: String
         let iso_639_1: String
         let iso_3166_1: String
         let key: String

@@ -20,13 +20,13 @@ final class TMDbTests: XCTestCase {
         try reqMap(.movieImages(id: movieId, includeImageLanguages: nil), TMDb.MovieImagesResp.self)
         try reqMap(.movieKeywords(id: movieId), TMDb.MovieKeywordsResp.self)
         try reqMap(.movieReleaseDates(id: movieId), TMDb.MovieReleaseDatesResp.self)
-        try reqMap(.movieVideos(id: movieId), TMDb.MovieReleaseDatesResp.self)
+        try reqMap(.movieVideos(id: movieId), TMDb.ListResp<TMDb.MovieVideo>.self)
 
         try reqMap(.movieLatest, TMDb.MovieDetail.self)
         try reqMap(.movieNowPlaying(page: nil, region: nil), TMDb.PaginatedRespWithDates<TMDb.MovieOutline>.self)
         try reqMap(.moviePopular(page: nil, region: nil), TMDb.PaginatedResp<TMDb.MovieOutline>.self)
         try reqMap(.movieTopRated(page: nil, region: nil), TMDb.PaginatedResp<TMDb.MovieOutline>.self)
-        try reqMap(.movieUpcoming(page: nil, region: nil), TMDb.ListResp<TMDb.MovieVideo>.self)
+        try reqMap(.movieUpcoming(page: nil, region: nil), TMDb.PaginatedRespWithDates<TMDb.MovieOutline>.self)
     }
 
     private func reqMap<T: Codable>(_ endPoint: TMDb, _ target: T.Type) throws {
