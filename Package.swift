@@ -20,6 +20,6 @@ let package = Package(
             dependencies: ["Moya", "RxSwift"]),
         .testTarget(
             name: "TMDbTests",
-            dependencies: ["TMDb", "RxSwift", "RxBlocking"]),
+            dependencies: ["TMDb", "RxSwift", "RxMoya", "RxBlocking"]),
         ]
 )

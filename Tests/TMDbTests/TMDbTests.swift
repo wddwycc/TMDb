@@ -13,7 +13,7 @@ final class TMDbTests: XCTestCase {
 
     let movieId = 550
 
-    func testMoviesAPI() throws {
+    func testMovieAPIs() throws {
         try reqMap(.movieDetail(id: movieId), TMDb.MovieDetail.self)
         try reqMap(.movieCredits(id: movieId), TMDb.MovieCreditsResp.self)
         try reqMap(.movieExternalIds(id: movieId), TMDb.MovieExternalIdsResp.self)
@@ -32,9 +32,9 @@ final class TMDbTests: XCTestCase {
         try reqMap(.movieUpcoming(page: nil, region: nil), TMDb.PaginatedRespWithDates<TMDb.MovieOutline>.self)
     }
 
-    private func reqMap<T: Codable>(_ endPoint: TMDb, _ target: T.Type) throws {
-        print(endPoint)
-        _ = try api.rx.request(endPoint)
+    @discardableResult
+    private func reqMap<T: Codable>(_ endPoint: TMDb, _ target: T.Type) throws -> T {
+        return try api.rx.request(endPoint)
             .do(onSuccess: { (resp) in
                 print(resp.request!.url!)
                 print(String(data: resp.data, encoding: .utf8)!)
@@ -48,6 +48,6 @@ final class TMDbTests: XCTestCase {
     }
 
     static var allTests = [
-        ("testAPI", testMoviesAPI),
+        ("testMovieAPIs", testMovieAPIs),
     ]
 }

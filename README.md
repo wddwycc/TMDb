@@ -239,3 +239,10 @@ api.request(.movieLatest) { (resp) in
 ### TV EPISODE GROUPS
 
 - [ ] [Get Details](https://developers.themoviedb.org/3/tv-episode-groups/sidebar-item-get-tv-episode-group-details)
+
+
+## Development
+
+```shell
+$ swift package generate-xcodeproj
+```
